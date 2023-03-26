@@ -1,0 +1,98 @@
+section.App {
+    /* background-color: grey; */
+    margin: auto;
+    width: 50%;
+    height: fit-content;
+}
+
+.Header {
+    margin: auto;
+    display: block;
+    border: 2px solid rgb(153, 255, 0);
+       
+}
+
+.Header div {
+    display: inline-block;
+}
+
+
+.Content {
+    margin: auto;
+    height: 750px;
+    border: 2px solid rgb(0, 110, 255);
+}
+
+.Activities {
+    margin: auto;
+    height: 80px;
+    border: 2px solid rgb(255, 0, 0);
+    
+}
+
+.Activities li {
+    list-style-type: none;
+    display: block;
+    float: left;
+    text-align: center;
+    margin: 30px;
+    overflow: hidden;
+}
+
+.Logo {
+    margin: 10px;
+    
+}
+
+.logoImage {
+    width: 150px;
+    height: 30px;
+}
+
+.Saved {
+    float: right;
+    margin: 10px;
+}
+
+.gifImage {
+    margin-left: 30px;
+}
+
+.Shared {
+    margin: 10px;
+    float: right;
+}
+
+.greetings {
+    margin: 50px;
+    font-size: 30px;
+}
+
+.joke {
+    margin: 50px;
+}
+
+.jokeContainer {
+    border: 2px solid grey;
+    border-radius: 20px;
+}
+
+.jokeTitle {
+    border-bottom: 2px solid grey;
+    margin: 0px;
+    padding: 10px 0px 10px 20px;
+}
+
+.jokeText {
+    margin: 0px;
+    height: 200px;
+    padding: 50px 50px 0px 50px;
+}
+
+.jokeButtons {
+    float: right;
+}
+
+.jokeButtonsDiv {
+    height: 50px;
+}
