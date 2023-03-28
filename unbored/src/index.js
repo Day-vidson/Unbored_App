@@ -4,12 +4,12 @@ import { createRoot } from "react-dom/client";
 import App from "./App"
 import { configureStore } from "@reduxjs/toolkit"
 import "./index.css"
-import { unboredReducer } from "./unboredRecuder";
+import savedSlice from "./savedSlice";
 
 const domNode = document.getElementById("container");
 const root = createRoot(domNode);
 
-var store = configureStore(unboredReducer);
+const store = configureStore({reducer: {saved:savedSlice}});
 
 root.render(
 <Provider store={store}>

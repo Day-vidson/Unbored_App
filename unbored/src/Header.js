@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import {
     Route,
     NavLink,
@@ -8,6 +9,8 @@ import logo from "./icons/logo_black.png"
 
 
 function header() {
+    const savedCount = useSelector((state) => state.saved.posts.length)
+
     return (
         <div className="Header">
             <div className="Logo">
@@ -20,7 +23,7 @@ function header() {
                     {/* <img src="">
                         
                     </img> */}
-                    ❤
+                    ❤{savedCount}
                 </NavLink>
             </div>
             <div className="Shared">

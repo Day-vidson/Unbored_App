@@ -8,7 +8,7 @@ import {
 function Activites() {
     return(
         <ul className="Activities">
-            <li><NavLink to="/chuckNorris">🤠</NavLink></li>
+            <li><NavLink to="/listOfJokes">🤠</NavLink></li>
             <li><NavLink to="/bored">✅</NavLink></li>
             <li><NavLink to="/post">⏹</NavLink></li>
             <li><NavLink to="chuckNorris">🤠</NavLink></li>

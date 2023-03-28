@@ -10,6 +10,7 @@ import Saved from "./Saved";
 import Shared from "./Shared";
 import Bored from "./API/Bored";
 import Post from "./Post";
+import ListOfJokes from "./ListOfJokes";
 
 function Content() {
     return(
@@ -18,7 +19,7 @@ function Content() {
                 <Route exact path="/" Component={Greetings}></Route>
                 <Route path="/saved" Component={Saved}></Route>
                 <Route path="/shared" Component={Shared}></Route>
-                <Route path="/chuckNorris" Component={ChuckNorris}></Route>
+                <Route path="/listOfJokes" Component={ListOfJokes}></Route>
                 <Route path="/bored" Component={Bored}></Route>
                 {/* <Route path="/post" Component={Post("testTitle")}></Route> */}
             </Routes>
