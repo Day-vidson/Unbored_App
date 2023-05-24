@@ -6,33 +6,36 @@ import {
     Routes
 } from "react-router-dom";
 import logo from "./icons/logo_black.png"
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FlightIcon from '@mui/icons-material/Flight';
 
-
-function header() {
+function Header() {
     const savedCount = useSelector((state) => state.saved.posts.length)
 
     return (
         <div className="Header">
+
             <div className="Logo">
                 <NavLink to="/">
                     <img className="logoImage"src={logo} alt="Unbored"></img>
                 </NavLink>
             </div>
+
+
             <div className="Saved">
-                <NavLink to="/saved">
-                    {/* <img src="">
-                        
-                    </img> */}
-                    ❤{savedCount}
+                <NavLink to={"/saved"}>
+                    <FavoriteIcon/>
+                    {savedCount}
                 </NavLink>
             </div>
+            
             <div className="Shared">
                 <NavLink to="/shared">
-                    ✈
+                    <FlightIcon/>
                 </NavLink>
             </div>
         </div>
     )
 }
 
-export default header;
+export default Header;

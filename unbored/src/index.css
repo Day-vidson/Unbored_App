@@ -21,23 +21,17 @@ section.App {
     margin: auto;
     height: 750px;
     border: 2px solid rgb(0, 110, 255);
+
 }
 
-.Activities {
-    margin: auto;
-    height: 80px;
-    border: 2px solid rgb(255, 0, 0);
-    
-}
-
-.Activities li {
-    list-style-type: none;
+.ChuckNorris {
+    width: fit-content;
     display: block;
-    float: left;
-    text-align: center;
-    margin: 30px;
-    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30%;
 }
+
 
 .Logo {
     margin: 10px;
@@ -51,7 +45,8 @@ section.App {
 
 .Saved {
     float: right;
-    margin: 10px;
+    margin: 15px;
+    width: fit-content;
 }
 
 .gifImage {
@@ -59,7 +54,7 @@ section.App {
 }
 
 .Shared {
-    margin: 10px;
+    margin: 15px;
     float: right;
 }
 
