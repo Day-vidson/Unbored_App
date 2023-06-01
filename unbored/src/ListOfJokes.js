@@ -1,4 +1,3 @@
-import { textAlign } from "@mui/system";
 import ChuckNorris from "./API/ChuckNorris";
 
 function ListOfJokes() {

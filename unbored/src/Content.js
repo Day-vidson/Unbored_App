@@ -9,7 +9,6 @@ import Greetings from "./Greetings";
 import Saved from "./Saved";
 import Shared from "./Shared";
 import Bored from "./API/Bored";
-import Post from "./Post";
 import ListOfJokes from "./ListOfJokes";
 
 function Content() {
