@@ -9,7 +9,7 @@ section.App {
     margin: auto;
     display: block;
     border: 2px solid rgb(153, 255, 0);
-       
+    min-width: 50vw;
 }
 
 .Header div {
@@ -18,18 +18,42 @@ section.App {
 
 
 .Content {
-    margin: auto;
-    height: 750px;
+    height: 85vh;
     border: 2px solid rgb(0, 110, 255);
-
+    display: flex;
+    justify-content: center;
+    min-width: 50vw;
 }
 
-.ChuckNorris {
-    width: fit-content;
+
+.postsContainer {
+    width: inherit;
+    height: inherit;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20%;
+    flex-direction: column;
+    overflow: auto;
+    scroll-snap-type: y mandatory;
+    min-height: 700px;
+    
+}
+
+.postsContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.post {
+    min-width: fit-content;
+    min-height: fit-content;
+    padding-top: 5vh;
+    scroll-snap-align: start;
+}
+
+.minion {
+    margin: auto;
+    width: 20vw;
+    display: flex;
 }
 
 .Logo {

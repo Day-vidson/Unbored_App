@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Header from "./Header.js";
 import Content from "./Content.js";
-import Activities from "./Activities.js";
+import NavBar from "./NavBar.js";
 import "./index.css"
 
 function App() {
@@ -17,11 +17,10 @@ function App() {
                 <section className="App">
                     <Header></Header>
                     <Content></Content>
-                    <Activities></Activities>
+                    <NavBar className="NavBar"></NavBar>
                 </section>
             </div>
         </HashRouter>
-        
     )
 }
 

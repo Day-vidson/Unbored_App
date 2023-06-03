@@ -10,13 +10,24 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { useState } from 'react';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
 
 // Because of props passing as a argunemt now we can call REACT props   !!!---NOT HTML PROPS----!!!! (for html props is func({nameOfProp}))
 function ChuckNorris(props) {
+  const [clicked, setClicked] = useState(false)
   const url = props.url
+
+  function handleSaveClick() {
+    setClicked(!clicked)
+    dispatch(save(joke.url))
+   // change <AddCircleIcon /> to <BlockIcon /> at "id"
+  }
+
     // wysłanie akcji do reducera
     const dispatch = useDispatch()
 
@@ -43,7 +54,6 @@ function ChuckNorris(props) {
     }
 
     function functionShare() {
-      
       navigator.clipboard.writeText(joke.url);
       alert("Link copied! Now send it to your friends!");
     } 
@@ -74,43 +84,45 @@ function ChuckNorris(props) {
     let currentDate = `${month} ${day}, ${year}`;
 
     return(
-      <Card sx={{ maxWidth: 345 }}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            C
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Best Chucknorris Jokes!"
-        subheader={currentDate}
-      />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {joke.value}
-        </Typography>
-      </CardContent>
-      <CardMedia
-        component="img"
-        height="fit-content"
-        image={chuckGif}
-        style={
-               {width: "fit-content", height: 70, objectFit: "contain", float: "right", padding: 8}}
-        alt="Dancing Chuck"
-      />
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" onClick={() => dispatch(save(joke.url))}>
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share" onClick={() => functionShare()}>
-          <ShareIcon />
-        </IconButton>
-      </CardActions>
-    </Card>
+      <div class="post">
+        <Card sx={{ maxWidth: 345 }}>
+          <CardHeader
+            avatar={
+              <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                C
+              </Avatar>
+            }
+            action={
+              <IconButton aria-label="settings">
+                <MoreVertIcon />
+              </IconButton>
+            }
+            title="Best Chucknorris Jokes!"
+            subheader={currentDate}
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary">
+              {joke.value}
+            </Typography>
+          </CardContent>
+          <CardMedia
+            component="img"
+            height="fit-content"
+            image={chuckGif}
+            style={
+                  {width: "fit-content", height: "8vh", objectFit: "contain", float: "right", padding: 10}}
+            alt="Dancing Chuck"
+          />
+          <CardActions disableSpacing>
+            <IconButton aria-label="add to favorite" onClick={() => handleSaveClick()}>
+              {clicked ? <FavoriteIcon /> : <FavoriteBorderIcon/>}
+            </IconButton>
+            <IconButton aria-label="share" onClick={() => functionShare()}>
+              <ShareIcon />
+            </IconButton>
+          </CardActions>
+        </Card>
+      </div>
     );
 }
 

@@ -1,8 +1,8 @@
 import minion from "./icons/bird.gif"
 
-function Greetings() {
+function Homepage() {
     return (
-        <div>
+        <div className="Homepage">
             <p className="greetings">Hello, David👋 <br/>
                     Feel bored? <br/>
                     Never again with Unbored!🎉
@@ -12,4 +12,4 @@ function Greetings() {
     )
 }
 
-export default Greetings;
+export default Homepage;

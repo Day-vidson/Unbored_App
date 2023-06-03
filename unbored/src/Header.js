@@ -8,6 +8,7 @@ import {
 import logo from "./icons/logo_black.png"
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FlightIcon from '@mui/icons-material/Flight';
+import Badge from '@mui/material/Badge';
 
 function Header() {
     const savedCount = useSelector((state) => state.saved.posts.length)
@@ -24,8 +25,9 @@ function Header() {
 
             <div className="Saved">
                 <NavLink to={"/saved"}>
-                    <FavoriteIcon/>
-                    {savedCount}
+                    <Badge badgeContent={savedCount} color="primary">
+                        <FavoriteIcon/>
+                    </Badge>
                 </NavLink>
             </div>
             

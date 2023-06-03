@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import ChuckNorris from "./API/ChuckNorris";
-import ListOfJokes from "./ListOfJokes";
+import PostsContainer from "./PostsContainer";
 
 function Saved() {
     // odczytuję aktualny stan ze store'a
@@ -10,7 +10,7 @@ function Saved() {
     
 
     return (
-        <div>
+        <div className="postsContainer">
             <p>Saved posts</p> 
 
             {posts.map((post) => <ChuckNorris url={post}></ChuckNorris>)}
