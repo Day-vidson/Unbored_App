@@ -46,8 +46,17 @@ section.App {
 .post {
     min-width: fit-content;
     min-height: fit-content;
-    padding-top: 5vh;
     scroll-snap-align: start;
+    margin-top: 5vh;
+
+    /* design */
+    /* border: 2px solid grey !important;
+    border-radius: 20px !important; */
+}
+
+.activityPost {
+    width: 345px;
+    max-width: 345px
 }
 
 .minion {
@@ -74,6 +83,7 @@ section.App {
 
 .gifImage {
     margin-left: 30px;
+    margin-top: 30px;
 }
 
 .Shared {
@@ -90,10 +100,6 @@ section.App {
     margin: 50px;
 }
 
-.jokeContainer {
-    border: 2px solid grey;
-    border-radius: 20px;
-}
 
 .jokeTitle {
     border-bottom: 2px solid grey;

@@ -2,12 +2,11 @@ import {
     Route,
     Routes
 } from "react-router-dom";
-import ChuckNorris from "./API/ChuckNorris";
 import Homepage from "./Homepage";
 import Saved from "./Saved";
 import Shared from "./Shared";
-import Activity from "./API/Activity";
-import PostsContainer from "./PostsContainer";
+import PostsContainerActivity from "./PostsContainerActivity";
+import PostsContainerChuck from "./PostsContainerChuck";
 
 function Content() {
     return(
@@ -16,8 +15,8 @@ function Content() {
                 <Route exact path="/" Component={Homepage}></Route>
                 <Route path="/saved" Component={Saved}></Route>
                 <Route path="/shared" Component={Shared}></Route>
-                <Route path="/jokes" Component={PostsContainer}></Route>
-                <Route path="/activities" Component={Activity}></Route>
+                <Route path="/jokes" Component={PostsContainerChuck}></Route>
+                <Route path="/activities" Component={PostsContainerActivity}></Route>
                 {/* <Route path="/post" Component={Post("testTitle")}></Route> */}
             </Routes>
         </div>

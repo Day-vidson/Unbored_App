@@ -86,7 +86,7 @@ function Activity() {
 
   return(
     <div class="post">
-      <Card sx={{ maxWidth: 345 }}>
+      <Card  >
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: lime[500] }} aria-label="Activity">

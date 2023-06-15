@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import ChuckNorris from "./API/ChuckNorris";
-import PostsContainer from "./PostsContainer";
+import PostsContainerChuck from "./PostsContainerChuck";
 
 function Saved() {
     // odczytuję aktualny stan ze store'a
