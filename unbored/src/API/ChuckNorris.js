@@ -1,6 +1,6 @@
 import chuckGif from "../icons/chuck.gif"
 import {useDispatch} from "react-redux"
-import { save } from "../savedSlice";
+import { deletePost, savePost } from "../savedSlice";
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -38,14 +38,14 @@ function ChuckNorris(props) {
     if (isClicked !== true) {
       setClicked(!clicked)
       shouldComponentUpdate(clicked)
-      dispatch(save(joke.url))
+      dispatch(savePost(joke.url))
 
 
     } else {
       // changes from clicked to unclicked
       setClicked(!clicked)
       shouldComponentUpdate(clicked)
-      // dispatch(save(joke.url))    nie zapisuj tylko usun z zapisanych postow
+      dispatch(deletePost(joke.url))
     }
     
     
@@ -118,7 +118,7 @@ function ChuckNorris(props) {
     // date----------------------------------------------------------------------//
 
     function shouldComponentUpdate(prevState) { 
-      if (prevState != undefined) { 
+      if (prevState !== undefined) { 
         return false;
       }
       return true;

@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
+// this is a sort of branch in whole redux store, called saved
+//  it has some functions as save, delete, or clear
 
 const initialState = {
   posts: []
@@ -6,34 +8,27 @@ const initialState = {
 
 
 
-const myArray = [1, 2, 3, 4, 5];
-
-const index = myArray.indexOf(2);
-
-const x = myArray.splice(index, 1);
-
-console.log(`myArray values: ${myArray}`);
-console.log(`variable x value: ${x}`);
-
-
-
-
 export const savedSlice = createSlice({
   name: 'saved',
   initialState,
   reducers: {
-    save: (state, action) => {
+    savePost: (state, action) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
       state.posts.push(action.payload)
     },
-    delete: (state, action) => {
-      let posts = useSelector((state) => state.saved.posts)(2)
+    deletePost: (state, action) => {
+      let index = state.posts.indexOf(action.payload)
 
 
-      state.posts.push(action.payload)
+      if (index === 0) {
+        state.posts.splice(index, index+1)
+      } else {
+        state.posts.splice(index, index)
+      }
+      
     },
     clear: (state) => {
       state.posts = []
@@ -42,6 +37,6 @@ export const savedSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { save, clear } = savedSlice.actions
+export const { savePost, deletePost, clear } = savedSlice.actions
 
 export default savedSlice.reducer
