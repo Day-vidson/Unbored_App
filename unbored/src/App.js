@@ -1,9 +1,5 @@
-import { useState } from "react";
 import {
-    Route,
-    NavLink,
     HashRouter,
-    Routes
 } from "react-router-dom";
 import Header from "./Header.js";
 import Content from "./Content.js";

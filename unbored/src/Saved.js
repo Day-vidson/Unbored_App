@@ -1,9 +1,8 @@
 import { useSelector } from "react-redux"
 import ChuckNorris from "./API/ChuckNorris";
-import PostsContainerChuck from "./PostsContainerChuck";
 
 function Saved() {
-    // odczytuję aktualny stan ze store'a
+    // Reading actual state from store
     const posts = useSelector((state) => state.saved.posts)
     console.log("posts:")
     console.log(posts)
@@ -13,7 +12,7 @@ function Saved() {
         <div className="postsContainer">
             <p>Saved posts</p> 
 
-            {posts.map((post) => <ChuckNorris url={post}></ChuckNorris>)}
+            {posts.map((post) => <ChuckNorris url={post} isLiked={true}></ChuckNorris>)}
             
 
         </div>

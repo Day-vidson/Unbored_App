@@ -12,24 +12,62 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
 // Because of props passing as a argunemt now we can call REACT props   !!!---NOT HTML PROPS----!!!! (for html props is func({nameOfProp}))
 function ChuckNorris(props) {
-  const [clicked, setClicked] = useState(false)
+  // Starting value
+  const isLiked = props.isLiked
+
   const url = props.url
 
+
+
+  // States
+  const [clicked, setClicked] = useState(isLiked)
+  const [joke, setJoke] = useState({})
+
+
   function handleSaveClick() {
-    setClicked(!clicked)
-    dispatch(save(joke.url))
-   // change <AddCircleIcon /> to <BlockIcon /> at "id"
+    let isClicked = clicked
+
+    // changes from unclicked to clicked
+    if (isClicked !== true) {
+      setClicked(!clicked)
+      shouldComponentUpdate(clicked)
+      dispatch(save(joke.url))
+
+
+    } else {
+      // changes from clicked to unclicked
+      setClicked(!clicked)
+      shouldComponentUpdate(clicked)
+      // dispatch(save(joke.url))    nie zapisuj tylko usun z zapisanych postow
+    }
+    
+    
+
+   // change <FavoriteIcon/> to <FavoriteBorderIcon/> at <CardActions/> -> <IconButton/>
   }
 
-    // wysłanie akcji do reducera
+    // Send action to reducer
     const dispatch = useDispatch()
+
+    useEffect(() => {
+      if (url) {
+        setJoke(ParseJoke(GetJokeFromUrl(url)))
+
+      } else {
+        setJoke(ParseJoke(GetNewJoke("https://api.chucknorris.io/jokes/random")))
+ 
+      }
+    }, [url])
+
+
+    
 
     function GetNewJoke(yourUrl){
       var Httpreq = new XMLHttpRequest();
@@ -46,8 +84,6 @@ function ChuckNorris(props) {
       return Httpreq.responseText 
     }
 
-    
-
     function ParseJoke(response) {
         var json_joke = JSON.parse(response);
         return json_joke;
@@ -60,13 +96,9 @@ function ChuckNorris(props) {
 
     // "https://api.chucknorris.io/jokes/random"
 
-    if (url) {
-      var joke = ParseJoke(GetJokeFromUrl(url))
-    } else {
-      var joke = ParseJoke(GetNewJoke("https://api.chucknorris.io/jokes/random"))      
-    }
+    
 
-    // Current date - done, works
+    // Current date
 
     function mapMonthNumberToName(index) {
       // This function returns name of month of given index (start from 0 - january).
@@ -82,6 +114,15 @@ function ChuckNorris(props) {
 
     // This arrangement can be altered based on how we want the date's format to appear.
     let currentDate = `${month} ${day}, ${year}`;
+
+    // date----------------------------------------------------------------------//
+
+    function shouldComponentUpdate(prevState) { 
+      if (prevState != undefined) { 
+        return false;
+      }
+      return true;
+    }
 
     return(
       <div class="post">
