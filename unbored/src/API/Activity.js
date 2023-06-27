@@ -14,6 +14,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { lime } from '@mui/material/colors'
 import minion from "./../icons/bird.gif"
 import coin from "./../icons/coin.gif"
+import Likes from '../Likes';
 
 
 function Activity() {
@@ -49,7 +50,7 @@ function Activity() {
         return "Medium"
       case cost>0:
         return "Cheap"
-      case cost==0:
+      case cost===0:
         return "Free"
     }
   }
@@ -85,7 +86,7 @@ function Activity() {
   var activityText = ParseActivity(GetActivity("https://www.boredapi.com/api/activity"))
 
   return(
-    <div class="post">
+    <div class="post activityPost">
       <Card  >
         <CardHeader
           avatar={
@@ -132,6 +133,7 @@ function Activity() {
           <IconButton aria-label="share" onClick={() => functionShare()}>
             <ShareIcon />
           </IconButton>
+          <Likes></Likes>
         </CardActions>
       </Card>
     </div>

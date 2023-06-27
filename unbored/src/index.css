@@ -3,6 +3,11 @@ section.App {
     margin: auto;
     width: 50%;
     height: fit-content;
+    min-width: 360px;
+}
+
+.Container {
+    min-width: 360px;
 }
 
 .Header {
@@ -16,18 +21,26 @@ section.App {
     display: inline-block;
 }
 
-
 .Content {
     height: 85vh;
     border: 2px solid rgb(0, 110, 255);
     display: flex;
     justify-content: center;
+    min-width: fit-content;
+    width: 50vw;
+    min-height: 500px;
+}
+
+.Box {
     min-width: 50vw;
+}
+
+.NavChuck {
+    text-align: center;
 }
 
 
 .postsContainer {
-    width: inherit;
     height: inherit;
     display: block;
     margin-left: auto;
@@ -35,8 +48,6 @@ section.App {
     flex-direction: column;
     overflow: auto;
     scroll-snap-type: y mandatory;
-    min-height: 700px;
-    
 }
 
 .postsContainer::-webkit-scrollbar {
@@ -119,4 +130,9 @@ section.App {
 
 .jokeButtonsDiv {
     height: 50px;
+}
+
+.IconButton {
+    justify-content: left;
+    align-items: flex-start;
 }

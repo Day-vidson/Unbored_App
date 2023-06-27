@@ -14,13 +14,13 @@ function NavBar() {
   };
 
   return (
-    <Box>
+    <Box className="Box">
       <BottomNavigation
         showLabels
         value={value}
         onChange={handleChange}
       >
-        <BottomNavigationAction component={NavLink} to="/jokes" label="Chuck Jokes" icon={"🤠"}/>
+        <BottomNavigationAction component={NavLink} to="/jokes" label="Chuck Jokes" icon={"🤠"}  className="NavChuck"/>
         <BottomNavigationAction component={NavLink} to="/activities" label="Actvities" icon={<TaskIcon />}/>
         <BottomNavigationAction component={NavLink} to="/post" label="Post" icon={<LocationOnIcon />}/>
         <BottomNavigationAction component={NavLink} to="/post" label="Post" icon={<LocationOnIcon />}/>

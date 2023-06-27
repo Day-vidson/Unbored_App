@@ -17,6 +17,26 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
+import * as React from 'react';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import Switch from '@mui/material/Switch';
+import SpeedDial from '@mui/material/SpeedDial';
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import SpeedDialAction from '@mui/material/SpeedDialAction';
+import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
+import SaveIcon from '@mui/icons-material/Save';
+import PrintIcon from '@mui/icons-material/Print';
+// import ShareIcon from '@mui/icons-material/Share';
+import Likes from "../Likes.js";
+
+
+
 // Because of props passing as a argunemt now we can call REACT props   !!!---NOT HTML PROPS----!!!! (for html props is func({nameOfProp}))
 function ChuckNorris(props) {
   // Starting value
@@ -154,13 +174,16 @@ function ChuckNorris(props) {
                   {width: "fit-content", height: "8vh", objectFit: "contain", float: "right", padding: 10}}
             alt="Dancing Chuck"
           />
-          <CardActions disableSpacing>
-            <IconButton aria-label="add to favorite" onClick={() => handleSaveClick()}>
+          <CardActions sx={{  alignItems:"flex-start" , flexDirection: "column" }} disableSpacing>
+            
+            <IconButton className="IconButton" aria-label="add to favorite" onClick={() => handleSaveClick()}>
               {clicked ? <FavoriteIcon /> : <FavoriteBorderIcon/>}
             </IconButton>
-            <IconButton aria-label="share" onClick={() => functionShare()}>
+            <IconButton className="IconButton" aria-label="share" onClick={() => functionShare()}>
               <ShareIcon />
             </IconButton>
+            <Likes sx={{ alignItems: "none" }} ></Likes>
+
           </CardActions>
         </Card>
       </div>
