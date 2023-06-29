@@ -1,14 +1,12 @@
 import { useSelector } from "react-redux";
 import {
-    Route,
-    NavLink,
-    HashRouter,
-    Routes
+    NavLink
 } from "react-router-dom";
 import logo from "./icons/logo_black.png"
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FlightIcon from '@mui/icons-material/Flight';
 import Badge from '@mui/material/Badge';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 function Header() {
     const savedCount = useSelector((state) => state.saved.posts.length)
@@ -26,7 +24,7 @@ function Header() {
             <div className="Saved">
                 <NavLink to={"/saved"}>
                     <Badge badgeContent={savedCount} color="primary">
-                        <FavoriteIcon/>
+                        <BookmarkIcon/>
                     </Badge>
                 </NavLink>
             </div>

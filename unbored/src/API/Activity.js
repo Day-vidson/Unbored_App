@@ -87,7 +87,7 @@ function Activity() {
 
   return(
     <div class="post activityPost">
-      <Card  >
+      <Card sx={{ maxWidth:345, border: 2, borderColor: 'lightgray' , borderRadius: 6 }} >
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: lime[500] }} aria-label="Activity">

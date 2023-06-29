@@ -39,6 +39,23 @@ section.App {
     text-align: center;
 }
 
+.DancingChuck {
+    width: fit-content !important;
+    height: 5em;
+    object-fit: contain;
+    float: right;
+    padding: 10px;
+    position: relative;
+    top: 85px
+}
+
+
+.IconButton {
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    flex: 1;
+}
 
 .postsContainer {
     height: inherit;
@@ -61,13 +78,7 @@ section.App {
     margin-top: 5vh;
 
     /* design */
-    /* border: 2px solid grey !important;
-    border-radius: 20px !important; */
-}
-
-.activityPost {
-    width: 345px;
-    max-width: 345px
+    
 }
 
 .minion {
@@ -130,9 +141,4 @@ section.App {
 
 .jokeButtonsDiv {
     height: 50px;
-}
-
-.IconButton {
-    justify-content: left;
-    align-items: flex-start;
 }

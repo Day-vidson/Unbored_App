@@ -1,5 +1,5 @@
 import chuckGif from "../icons/chuck.gif"
-import {useDispatch} from "react-redux"
+import { useDispatch } from "react-redux"
 import { deletePost, savePost } from "../savedSlice";
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -9,31 +9,16 @@ import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useEffect, useState } from 'react';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-
-
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormLabel from '@mui/material/FormLabel';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import Switch from '@mui/material/Switch';
-import SpeedDial from '@mui/material/SpeedDial';
-import SpeedDialIcon from '@mui/material/SpeedDialIcon';
-import SpeedDialAction from '@mui/material/SpeedDialAction';
-import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
-import SaveIcon from '@mui/icons-material/Save';
-import PrintIcon from '@mui/icons-material/Print';
-// import ShareIcon from '@mui/icons-material/Share';
-import Likes from "../Likes.js";
+import Likes from '../Likes.js';
+
+// bookmark icons
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 
 
@@ -149,7 +134,7 @@ function ChuckNorris(props) {
         <Card sx={{ maxWidth: 345 }}>
           <CardHeader
             avatar={
-              <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+              <Avatar sx={{ bgcolor: blue[500] }} aria-label="Chuck">
                 C
               </Avatar>
             }
@@ -158,7 +143,7 @@ function ChuckNorris(props) {
                 <MoreVertIcon />
               </IconButton>
             }
-            title="Best Chucknorris Jokes!"
+            title="Best Chuck Norris Jokes!"
             subheader={currentDate}
           />
           <CardContent>
@@ -170,19 +155,18 @@ function ChuckNorris(props) {
             component="img"
             height="fit-content"
             image={chuckGif}
-            style={
-                  {width: "fit-content", height: "8vh", objectFit: "contain", float: "right", padding: 10}}
+            className="DancingChuck"
             alt="Dancing Chuck"
           />
-          <CardActions sx={{  alignItems:"flex-start" , flexDirection: "column" }} disableSpacing>
+          <CardActions sx={{  display: "flexbox", alignItems:"flex-start" , flexDirection: "column" }} disableSpacing>
+            <Likes sx={{ alignItems: "none", flex: "100%" }} ></Likes>
             
             <IconButton className="IconButton" aria-label="add to favorite" onClick={() => handleSaveClick()}>
-              {clicked ? <FavoriteIcon /> : <FavoriteBorderIcon/>}
+              {clicked ? <BookmarkIcon /> : <BookmarkBorderIcon/>}
             </IconButton>
             <IconButton className="IconButton" aria-label="share" onClick={() => functionShare()}>
               <ShareIcon />
             </IconButton>
-            <Likes sx={{ alignItems: "none" }} ></Likes>
 
           </CardActions>
         </Card>
