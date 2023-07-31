@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-// this is a sort of branch in whole redux store, called saved
+// this is a sort of branch in whole redux store, called "saved"
 //  it has some functions as save, delete, or clear
 
 const initialState = {

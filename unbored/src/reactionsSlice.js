@@ -3,32 +3,64 @@ import { createSlice } from '@reduxjs/toolkit'
 //  it stores count of specific reactions
 
 const initialState = {
+  id: "",
   thumbUp: 0,
   thumbDown: 0,
   wow: 0,
   loveIt: 0,
 }
 
-var reactions = state.reactions;
 
 export const reactionsSlice = createSlice({
   name: 'reactions',
   initialState,
   reducers: {
-    increase: (state, action) => {
-        reactions.thumbUp += 1
+
+    // !!! zmapowac action creators ze stanami reackji w Likes.js 
+
+    increaseThumbUp: (state, action) => {
+      state.reactions.posts.thumbUp += 1
     },
 
-    decrease: (state, action) => {
-        reactions
+    decreaseThumbUp: (state, action) => {
+      state.reactions.posts.thumbUp -= 1
+    },
+
+    increaseThumbDown: (state, action) => {
+      state.reactions.posts.thumbDown += 1
+    },
+
+    decreaseThumbDown: (state, action) => {
+      state.reactions.posts.thumbDown -= 1
     },
     
-    // jak to zrobic? bo potrzebuje + i - dla kazdej reakcji, mam ich 4
+    increaseWow: (state, action) => {
+      state.reactions.posts.wow += 1
+    },
+
+    decreaseWow: (state, action) => {
+      state.reactions.posts.wow -= 1
+    },
+    
+    increaseLoveIt: (state, action) => {
+      state.reactions.posts.loveIt += 1
+    },
+
+    decreaseLoveIt: (state, action) => {
+      state.reactions.posts.loveIt -= 1
+    },
+    
+    setId: (state, action) => {
+      state.reactions.posts.id = action.payload
+    }
+
+    // !!! zmapowac action creators ze stanami reackji w Likes.js 
+    
     
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { increase, decrease } = reactionsSlice.actions
+export const { increaseThumbUp, decreaseThumbUp, increaseThumbDown, decreaseThumbDown, increaseWow, decreaseWow, increaseLoveIt, decreaseLoveIt, setId} = reactionsSlice.actions
 
 export default reactionsSlice.reducer

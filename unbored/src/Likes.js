@@ -32,6 +32,10 @@ function Likes() {
   const [wowClicked, setWowClicked] = useState(false)
   const [loveItClicked, setLoveIt] = useState(false)
 
+  const TotNumberOfLikes = useSelector((state) => state.reactions)
+
+  const [totalOfLikes, setTotalOfLikes] = useState()
+
   // const [noThumbUp, setnoThumbUp] = useSelector(false)
   // const [totalOfLikes, setTotalOfLikes]
 
@@ -97,7 +101,6 @@ function Likes() {
             <SpeedDialAction
               key={action.name}
               icon={action.icon}
-              openIcon
               tooltipTitle={action.name}
               onClick={action.onClick}
             />

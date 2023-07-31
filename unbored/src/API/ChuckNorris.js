@@ -61,6 +61,7 @@ function ChuckNorris(props) {
     // Send action to reducer
     const dispatch = useDispatch()
 
+    
     useEffect(() => {
       if (url) {
         setJoke(ParseJoke(GetJokeFromUrl(url)))
@@ -85,12 +86,12 @@ function ChuckNorris(props) {
       var Httpreq = new XMLHttpRequest()
       Httpreq.open("GET",yourUrl,false)
       Httpreq.send(null)
-      
       return Httpreq.responseText 
     }
 
     function ParseJoke(response) {
         var json_joke = JSON.parse(response);
+        console.log(json_joke)
         return json_joke;
     }
 
