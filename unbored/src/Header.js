@@ -3,7 +3,6 @@ import {
     NavLink
 } from "react-router-dom";
 import logo from "./icons/logo_black.png"
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import FlightIcon from '@mui/icons-material/Flight';
 import Badge from '@mui/material/Badge';
 import BookmarkIcon from '@mui/icons-material/Bookmark';

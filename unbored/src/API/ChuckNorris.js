@@ -26,11 +26,8 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 function ChuckNorris(props) {
   // Starting value
   const isLiked = props.isLiked
-
   const url = props.url
-
-
-
+  
   // States
   const [clicked, setClicked] = useState(isLiked)
   const [joke, setJoke] = useState({})
@@ -53,8 +50,6 @@ function ChuckNorris(props) {
       dispatch(deletePost(joke.url))
     }
     
-    
-
    // change <FavoriteIcon/> to <FavoriteBorderIcon/> at <CardActions/> -> <IconButton/>
   }
 
@@ -162,7 +157,7 @@ function ChuckNorris(props) {
           <CardActions sx={{  display: "flexbox", alignItems:"flex-start" , flexDirection: "column" }} disableSpacing>
             <Likes sx={{ alignItems: "none", flex: "100%" }} ></Likes>
             
-            <IconButton className="IconButton" aria-label="add to favorite" onClick={() => handleSaveClick()}>
+            <IconButton className="IconButton" aria-label="save" onClick={() => handleSaveClick()}>
               {clicked ? <BookmarkIcon /> : <BookmarkBorderIcon/>}
             </IconButton>
             <IconButton className="IconButton" aria-label="share" onClick={() => functionShare()}>

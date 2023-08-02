@@ -21,8 +21,12 @@ import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { setNewEntry } from "./reactionsSlice";
+
+// Immutable.js
+const { Map } = require('immutable');
 
 
 // Likes component
@@ -31,6 +35,19 @@ function Likes() {
   const [thumbDownClicked, setThumbDownClicked] = useState(false)
   const [wowClicked, setWowClicked] = useState(false)
   const [loveItClicked, setLoveIt] = useState(false)
+  const [id, setId] = useState("")
+
+  // const [isNew, setIsNew] = useState(wasSeen)
+
+  // const wasSeen = wasSeen()
+
+  // const posts = useSelector((state) => state.reactions.posts)
+
+  const dispatch = useDispatch()
+
+  function wasSeen() {
+    
+  }
 
   const TotNumberOfLikes = useSelector((state) => state.reactions)
 
@@ -59,6 +76,7 @@ function Likes() {
 
   function handleThumpUpClicked() {
     setThumbUpClicked(!thumbUpClicked)
+    dispatch(setNewEntry("testID"))
     console.log("Like!")
   }
   function handleThumpDownClicked() {

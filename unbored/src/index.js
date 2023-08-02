@@ -4,15 +4,17 @@ import { createRoot } from "react-dom/client";
 import App from "./App"
 import { configureStore } from "@reduxjs/toolkit"
 import "./index.css"
-import savedSlice from "./savedSlice";
-import reactionsSlice from "./reactionsSlice";
+import rootReducer from "./rootReducer";
 
 const domNode = document.getElementById("container");
 const root = createRoot(domNode);
 
-const store = configureStore({reducer: {saved:savedSlice, reactions: reactionsSlice}});
+const store = configureStore({
+    reducer: rootReducer
+});
 
 root.render(
-<Provider store={store}>
+    <Provider store={store}>
         <App/>
-    </Provider>);
+    </Provider>
+);

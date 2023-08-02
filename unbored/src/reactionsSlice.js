@@ -1,14 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
-// this is a sort of branch in whole redux store, called reactions
-//  it stores count of specific reactions
+// Immutable.js
+const { Map } = require('immutable');
+
+// This is a slice in redux store, called reactions
+//  it stores count of specific reactions of specific IDs
 
 const initialState = {
-  id: "",
-  thumbUp: 0,
-  thumbDown: 0,
-  wow: 0,
-  loveIt: 0,
+  posts: []
 }
+
+// initialState.set('', maps)
+// {
+//   id: "",
+//   thumbUp: 0,
+//   thumbDown: 0,
+//   wow: 0,
+//   loveIt: 0,
+// }
 
 
 export const reactionsSlice = createSlice({
@@ -18,40 +26,40 @@ export const reactionsSlice = createSlice({
 
     // !!! zmapowac action creators ze stanami reackji w Likes.js 
 
-    increaseThumbUp: (state, action) => {
-      state.reactions.posts.thumbUp += 1
-    },
+    // increaseThumbUp: (state) => {
+    //   state.reactions.posts.thumbUp += 1
+    // },
 
-    decreaseThumbUp: (state, action) => {
-      state.reactions.posts.thumbUp -= 1
-    },
+    // decreaseThumbUp: (state) => {
+    //   state.reactions.posts.thumbUp -= 1
+    // },
 
-    increaseThumbDown: (state, action) => {
-      state.reactions.posts.thumbDown += 1
-    },
+    // increaseThumbDown: (state) => {      
+    //   state.reactions.posts.thumbDown += 1
+    // },
 
-    decreaseThumbDown: (state, action) => {
-      state.reactions.posts.thumbDown -= 1
-    },
+    // decreaseThumbDown: (state) => {
+    //   state.reactions.posts.thumbDown -= 1
+    // },
     
-    increaseWow: (state, action) => {
-      state.reactions.posts.wow += 1
-    },
+    // increaseWow: (state) => {
+    //   state.reactions.posts.wow += 1
+    // },
 
-    decreaseWow: (state, action) => {
-      state.reactions.posts.wow -= 1
-    },
+    // decreaseWow: (state) => {
+    //   state.reactions.posts.wow -= 1
+    // },
     
-    increaseLoveIt: (state, action) => {
-      state.reactions.posts.loveIt += 1
-    },
+    // increaseLoveIt: (state) => {
+    //   state.reactions.posts.loveIt += 1
+    // },
 
-    decreaseLoveIt: (state, action) => {
-      state.reactions.posts.loveIt -= 1
-    },
+    // decreaseLoveIt: (state) => {
+    //   state.reactions.posts.loveIt -= 1
+    // },
     
-    setId: (state, action) => {
-      state.reactions.posts.id = action.payload
+    setNewEntry: (state, action) => {
+      state.posts.push(action.payload)
     }
 
     // !!! zmapowac action creators ze stanami reackji w Likes.js 
@@ -61,6 +69,7 @@ export const reactionsSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { increaseThumbUp, decreaseThumbUp, increaseThumbDown, decreaseThumbDown, increaseWow, decreaseWow, increaseLoveIt, decreaseLoveIt, setId} = reactionsSlice.actions
+export const { increaseThumbUp, decreaseThumbUp, increaseThumbDown, decreaseThumbDown, 
+                increaseWow, decreaseWow, increaseLoveIt, decreaseLoveIt, setNewEntry} = reactionsSlice.actions
 
 export default reactionsSlice.reducer
