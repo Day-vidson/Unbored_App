@@ -5,14 +5,10 @@ import { useState } from "react";
 
 function PostsContainerChuck() {
     const [items, setItems] = useState([<ChuckNorris/>, <ChuckNorris/>, <ChuckNorris/>, <ChuckNorris/>, <ChuckNorris/>])
-    // const [items, setItems] = useState([<ChuckNorris/>])
     
-    
-
     function loadMorePosts() {
         // Adds 5 next posts, while scrolling
         setItems([...items,<ChuckNorris/>, <ChuckNorris/>, <ChuckNorris/>, <ChuckNorris/>, <ChuckNorris/>])
-        // setItems([...items,<ChuckNorris/>])
     }
 
     return(

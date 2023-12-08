@@ -6,8 +6,6 @@ const initialState = {
   posts: []
 }
 
-
-
 export const savedSlice = createSlice({
   name: 'saved',
   initialState,
@@ -22,13 +20,11 @@ export const savedSlice = createSlice({
     deletePost: (state, action) => {
       let index = state.posts.indexOf(action.payload)
 
-
       if (index === 0) {
         state.posts.splice(index, index+1)
       } else {
         state.posts.splice(index, index)
       }
-      
     },
     clear: (state) => {
       state.posts = []
@@ -40,3 +36,4 @@ export const savedSlice = createSlice({
 export const { savePost, deletePost, clear } = savedSlice.actions
 
 export default savedSlice.reducer
+

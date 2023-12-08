@@ -21,24 +21,12 @@ import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-import { useDispatch, useSelector } from 'react-redux';
-
-import { setNewEntry } from "./reactionsSlice";
-
-
-
 // Likes component
 function Likes() {
   const [thumbUpClicked, setThumbUpClicked] = useState(false)
   const [thumbDownClicked, setThumbDownClicked] = useState(false)
   const [wowClicked, setWowClicked] = useState(false)
   const [loveItClicked, setLoveIt] = useState(false)
-  const [totalOfLikes, setTotalOfLikes] = useState(0)
-
-  // setTotalOfLikes(calcTotalOfLikes())
-
-  const dispatch = useDispatch()
-
 
   // Reaction Icons
   function thumbUpIcon() {
@@ -61,13 +49,6 @@ function Likes() {
     console.log("Like!")
   }
 
-  function test() {
-    handleThumpUpClicked()
-    setTotalOfLikes(calcTotalOfLikes())
-    console.log("thumbUpClicked: " + thumbUpClicked)
-    console.log("total from handler: " + totalOfLikes)
-
-  }
   function handleThumpDownClicked() {
     setThumbDownClicked(!thumbDownClicked)
     console.log("Dislike!")
@@ -81,23 +62,9 @@ function Likes() {
     console.log("Love it!")
   }
 
-  function calcTotalOfLikes() {
-    let totOfLikes = totalOfLikes;
-    if (thumbUpClicked || thumbDownClicked || wowClicked || loveItClicked) {
-      console.log("values of state from calc: ")
-      console.log("up" + thumbUpClicked)
-      console.log("down" + thumbDownClicked)
-      console.log("wow" + wowClicked)
-      console.log("love" + loveItClicked)
-      totOfLikes = totOfLikes+thumbUpClicked+thumbDownClicked+wowClicked+loveItClicked
-      setTotalOfLikes(totOfLikes)
-    }
-    return totOfLikes
-  }
-
 
   const actions = [
-    { icon: thumbUpIcon(), name: 'Like' , onClick: test},
+    { icon: thumbUpIcon(), name: 'Like' , onClick: handleThumpUpClicked},
     { icon: thumbDownIcon(), name: 'Dislike', onClick: handleThumpDownClicked },
     { icon: wowIcon(), name: 'Wow!', onClick: handleWowClicked },
     { icon: loveItIcon(), name: 'Love it!', onClick: handleLoveItClicked },

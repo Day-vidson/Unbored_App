@@ -10,7 +10,6 @@ function Saved() {
 
     return (
         <div className="postsContainer">
-            <p>Saved posts</p> 
 
             {posts.map((post) => <ChuckNorris url={post} isLiked={true}></ChuckNorris>)}
             

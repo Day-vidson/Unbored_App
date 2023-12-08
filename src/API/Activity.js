@@ -9,36 +9,46 @@ import Typography from '@mui/material/Typography';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useState } from 'react';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import { lime } from '@mui/material/colors'
 import minion from "./../icons/bird.gif"
 import coin from "./../icons/coin.gif"
 import Likes from '../Likes';
+import difficulty from "./../icons/difficulty.png"
+import participants from "./../icons/participants.png"
+
 
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 
+
 function Activity() {
   const [clicked, setClicked] = useState(false)
+
   
   var activityType = ""
   var activityCost = ""
-
-  function handleSaveClick() {
-    setClicked(!clicked)
-   // change <AddCircleIcon /> to <BlockIcon /> at "id"
-  }
+  var activityAccess = ""
+  var activityParticipants
+  var activityKey = ""
 
   function functionShare() {
-    navigator.clipboard.writeText();
-    alert("Link copied! Now send it to your friends!");
+    navigator.clipboard
+      .writeText(activityKey)
+      .then(() => {
+        alert("Link successfully copied, now send it to your friends!");
+      })
+      .catch(() => {
+        alert("something went wrong");
+      });
   } 
+
+  function handleSaveClick() {}
 
   function GetActivity(yourUrl){
     var Httpreq = new XMLHttpRequest();
     Httpreq.open("GET",yourUrl,false);
     Httpreq.send(null);
+
     return Httpreq.responseText;
   }
 
@@ -54,11 +64,31 @@ function Activity() {
         return "Cheap"
       case cost===0:
         return "Free"
+      default:
+        return ""
+    }
+  }
+
+  function mapAccess(access) {
+    access = access*10
+
+    switch(true) {
+      case access>=8:
+        return "Challenging"
+      case access>=5:
+        return "Demanding"
+      case access>0:
+        return "Easy"
+      case access===0:
+        return "Piece of cake"
+      default:
+        return ""
     }
   }
 
   function ParseActivity(response) {
     var json_activity = JSON.parse(response);
+    console.log(json_activity)
 
     // First letter capital
     var str = json_activity.type
@@ -66,6 +96,13 @@ function Activity() {
 
     // Mapping cost
     activityCost = mapCost(json_activity.price)
+
+    // Mapping accessibility
+    activityAccess = mapAccess(json_activity.accessibility)
+
+    activityParticipants = json_activity.participants
+
+    activityKey = json_activity.key
     return json_activity.activity
   }
 
@@ -119,8 +156,34 @@ function Activity() {
           <Typography variant="body2" color="text.secondary" style={{marginLeft: "2em" ,padding: "0.5em", height: "2em"}}>
             {activityCost}
           </Typography>
+
+
+          <CardMedia
+          component="img"
+          height="fit-content"
+          image={difficulty}
+          style={
+            {width: "fit-content", height: "3vh", float: "left", display: 'inline'}
+          }
+          alt="Difficulty"
+          />
+          <Typography variant="body2" color="text.secondary" style={{marginLeft: "2em" ,padding: "0.5em", height: "2em"}}>
+            {activityAccess}
+          </Typography>
+
+          <CardMedia
+          component="img"
+          height="fit-content"
+          image={participants}
+          style={
+            {width: "fit-content", height: "3vh", float: "left", display: 'inline'}
+          }
+          alt="Accessibility"
+          />
+          <Typography variant="body2" color="text.secondary" style={{marginLeft: "2em" ,padding: "0.5em", height: "2em"}}>
+            {activityParticipants}
+          </Typography>
         </CardContent>
-        
         
         <CardMedia
           component="img"
@@ -131,6 +194,8 @@ function Activity() {
                 {width: "fit-content", height: "8vh", objectFit: "contain", float: "right", padding: 10}}
           alt="Happy parrot"
         />
+
+
         <CardActions sx={{  display: "flexbox", alignItems:"flex-start" , flexDirection: "column" }} disableSpacing>
             <Likes sx={{ alignItems: "none", flex: "100%" }} ></Likes>
             

@@ -41,8 +41,6 @@ function ChuckNorris(props) {
       setClicked(!clicked)
       shouldComponentUpdate(clicked)
       dispatch(savePost(joke.url))
-
-
     } else {
       // changes from clicked to unclicked
       setClicked(!clicked)
@@ -50,12 +48,10 @@ function ChuckNorris(props) {
       dispatch(deletePost(joke.url))
     }
     
-   // change <FavoriteIcon/> to <FavoriteBorderIcon/> at <CardActions/> -> <IconButton/>
   }
 
     // Send action to reducer
     const dispatch = useDispatch()
-
     
     useEffect(() => {
       if (url) {
@@ -91,8 +87,14 @@ function ChuckNorris(props) {
     }
 
     function functionShare() {
-      navigator.clipboard.writeText(joke.url);
-      alert("Link copied! Now send it to your friends!");
+      navigator.clipboard
+      .writeText(joke.url)
+      .then(() => {
+        alert("Link successfully copied, now send it to your friends!");
+      })
+      .catch(() => {
+        alert("something went wrong");
+      });
     } 
 
     // "https://api.chucknorris.io/jokes/random"
@@ -100,7 +102,6 @@ function ChuckNorris(props) {
     
 
     // Current date
-
     function mapMonthNumberToName(index) {
       // This function returns name of month of given index (start from 0 - january).
       let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -127,7 +128,7 @@ function ChuckNorris(props) {
 
     return(
       <div class="post">
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345, border: 2, borderColor: 'lightgray' , borderRadius: 6 }} >
           <CardHeader
             avatar={
               <Avatar sx={{ bgcolor: blue[500] }} aria-label="Chuck">
