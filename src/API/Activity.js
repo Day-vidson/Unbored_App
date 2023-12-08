@@ -16,6 +16,8 @@ import minion from "./../icons/bird.gif"
 import coin from "./../icons/coin.gif"
 import Likes from '../Likes';
 
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 function Activity() {
   const [clicked, setClicked] = useState(false)
@@ -118,23 +120,28 @@ function Activity() {
             {activityCost}
           </Typography>
         </CardContent>
+        
+        
         <CardMedia
           component="img"
           height="fit-content"
+          className="DancingChuck"
           image={minion}
           style={
                 {width: "fit-content", height: "8vh", objectFit: "contain", float: "right", padding: 10}}
           alt="Happy parrot"
         />
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorite" onClick={() => handleSaveClick()}>
-            {clicked ? <FavoriteIcon /> : <FavoriteBorderIcon/>}
-          </IconButton>
-          <IconButton aria-label="share" onClick={() => functionShare()}>
-            <ShareIcon />
-          </IconButton>
-          <Likes></Likes>
-        </CardActions>
+        <CardActions sx={{  display: "flexbox", alignItems:"flex-start" , flexDirection: "column" }} disableSpacing>
+            <Likes sx={{ alignItems: "none", flex: "100%" }} ></Likes>
+            
+            <IconButton className="IconButton" aria-label="save" onClick={() => handleSaveClick()}>
+              {clicked ? <BookmarkIcon /> : <BookmarkBorderIcon/>}
+            </IconButton>
+            <IconButton className="IconButton" aria-label="share" onClick={() => functionShare()}>
+              <ShareIcon />
+            </IconButton>
+
+          </CardActions>
       </Card>
     </div>
   );

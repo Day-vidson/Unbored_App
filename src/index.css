@@ -1,9 +1,14 @@
 section.App {
-    /* background-color: grey; */
     margin: auto;
     width: 50%;
     height: fit-content;
     min-width: 360px;
+    border-radius: 30px;
+    border: 2px solid grey;
+    max-height: 10%;
+}
+.App {
+    max-height: fit-content;
 }
 
 .Container {
@@ -11,19 +16,20 @@ section.App {
 }
 
 .Header {
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     display: block;
-    border: 2px solid rgb(153, 255, 0);
     min-width: 50vw;
 }
 
 .Header div {
     display: inline-block;
+    margin: 1.5vw;
 }
 
 .Content {
+    max-width: 50vw;
     height: 85vh;
-    border: 2px solid rgb(0, 110, 255);
     display: flex;
     justify-content: center;
     min-width: fit-content;
@@ -32,9 +38,14 @@ section.App {
 }
 
 .Box {
-    min-width: 50vw;
+    max-width: fit-content;
+    min-width: 30vw;
+    margin: auto;
 }
 
+.NavBar {
+    max-width: 50vw;
+}
 .NavChuck {
     text-align: center;
 }

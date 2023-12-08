@@ -25,8 +25,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { setNewEntry } from "./reactionsSlice";
 
-// Immutable.js
-const { Map } = require('immutable');
 
 
 // Likes component
@@ -35,49 +33,40 @@ function Likes() {
   const [thumbDownClicked, setThumbDownClicked] = useState(false)
   const [wowClicked, setWowClicked] = useState(false)
   const [loveItClicked, setLoveIt] = useState(false)
-  const [id, setId] = useState("")
+  const [totalOfLikes, setTotalOfLikes] = useState(0)
 
-  // const [isNew, setIsNew] = useState(wasSeen)
-
-  // const wasSeen = wasSeen()
-
-  // const posts = useSelector((state) => state.reactions.posts)
+  // setTotalOfLikes(calcTotalOfLikes())
 
   const dispatch = useDispatch()
 
-  function wasSeen() {
-    
-  }
-
-  const TotNumberOfLikes = useSelector((state) => state.reactions)
-
-  const [totalOfLikes, setTotalOfLikes] = useState()
-
-  // const [noThumbUp, setnoThumbUp] = useSelector(false)
-  // const [totalOfLikes, setTotalOfLikes]
 
   // Reaction Icons
-
   function thumbUpIcon() {
-    return thumbUpClicked ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon/>
+    return thumbUpClicked ? <Badge badgeContent={1} color="primary"><ThumbUpAltIcon /></Badge> : <Badge badgeContent="0" color='primary'><ThumbUpOffAltIcon /></Badge>
   }
-
   function thumbDownIcon() {
     return thumbDownClicked ? <Badge badgeContent={1} color="primary"><ThumbDownAltIcon /></Badge> : <Badge badgeContent="0" color='primary'><ThumbDownOffAltIcon/></Badge>
   }
   function wowIcon() {
-    return wowClicked ? <EmojiEmotionsIcon /> : <SentimentVerySatisfiedIcon/>
+    return wowClicked ? <Badge badgeContent={1} color="primary"><EmojiEmotionsIcon /></Badge> : <Badge badgeContent="0" color='primary'><SentimentVerySatisfiedIcon/></Badge>
   }
   function loveItIcon() {
-    return loveItClicked ? <FavoriteIcon /> : <FavoriteBorderIcon/>
+    return loveItClicked ? <Badge badgeContent={1} color="primary"><FavoriteIcon /></Badge> : <Badge badgeContent="0" color='primary'><FavoriteBorderIcon/></Badge>
   }
 
   // Reaction handlers
 
   function handleThumpUpClicked() {
     setThumbUpClicked(!thumbUpClicked)
-    dispatch(setNewEntry("testID"))
     console.log("Like!")
+  }
+
+  function test() {
+    handleThumpUpClicked()
+    setTotalOfLikes(calcTotalOfLikes())
+    console.log("thumbUpClicked: " + thumbUpClicked)
+    console.log("total from handler: " + totalOfLikes)
+
   }
   function handleThumpDownClicked() {
     setThumbDownClicked(!thumbDownClicked)
@@ -92,9 +81,23 @@ function Likes() {
     console.log("Love it!")
   }
 
+  function calcTotalOfLikes() {
+    let totOfLikes = totalOfLikes;
+    if (thumbUpClicked || thumbDownClicked || wowClicked || loveItClicked) {
+      console.log("values of state from calc: ")
+      console.log("up" + thumbUpClicked)
+      console.log("down" + thumbDownClicked)
+      console.log("wow" + wowClicked)
+      console.log("love" + loveItClicked)
+      totOfLikes = totOfLikes+thumbUpClicked+thumbDownClicked+wowClicked+loveItClicked
+      setTotalOfLikes(totOfLikes)
+    }
+    return totOfLikes
+  }
+
 
   const actions = [
-    { icon: thumbUpIcon(), name: 'Like' , onClick: handleThumpUpClicked},
+    { icon: thumbUpIcon(), name: 'Like' , onClick: test},
     { icon: thumbDownIcon(), name: 'Dislike', onClick: handleThumpDownClicked },
     { icon: wowIcon(), name: 'Wow!', onClick: handleWowClicked },
     { icon: loveItIcon(), name: 'Love it!', onClick: handleLoveItClicked },
@@ -105,7 +108,7 @@ function Likes() {
       <Badge anchorOrigin={{
         vertical: 'top',
         horizontal: 'left',
-        }} badgeContent={20} color='secondary'>
+        }} >
         <SpeedDial
 
           ariaLabel="SpeedDial basic example"

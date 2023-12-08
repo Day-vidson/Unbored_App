@@ -22,9 +22,6 @@ function NavBar() {
       >
         <BottomNavigationAction component={NavLink} to="/jokes" label="Chuck Jokes" icon={"🤠"}  className="NavChuck"/>
         <BottomNavigationAction component={NavLink} to="/activities" label="Actvities" icon={<TaskIcon />}/>
-        <BottomNavigationAction component={NavLink} to="/post" label="Post" icon={<LocationOnIcon />}/>
-        <BottomNavigationAction component={NavLink} to="/post" label="Post" icon={<LocationOnIcon />}/>
-        <BottomNavigationAction component={NavLink} to="/post" label="Post" icon={<LocationOnIcon />}/>
       </BottomNavigation>
     </Box>
   );
