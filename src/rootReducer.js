@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import reactionsSlice from "./reactionsSlice";
 import savedSlice from "./savedSlice";
+import savedActivitySlice from "./savedActivitySlice"
 
 // Reducers are made from particular "slices" (where they are made thanks to createSlice(..., reducers: {here1(), here2()}) ) and combined into one "rootRecuder" 
 // in order to get passed to index.js -> configureStore(reducer: rootReducer)
@@ -8,6 +9,7 @@ import savedSlice from "./savedSlice";
 const rootReducer = combineReducers({
     reactions: reactionsSlice,
     saved: savedSlice,
+    savedActivity: savedActivitySlice,
 });
  
 export default rootReducer;

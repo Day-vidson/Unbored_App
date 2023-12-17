@@ -7,8 +7,8 @@ function PostsContainerChuck() {
     const [items, setItems] = useState([<ChuckNorris/>, <ChuckNorris/>, <ChuckNorris/>, <ChuckNorris/>, <ChuckNorris/>])
     
     function loadMorePosts() {
-        // Adds 5 next posts, while scrolling
-        setItems([...items,<ChuckNorris/>, <ChuckNorris/>, <ChuckNorris/>, <ChuckNorris/>, <ChuckNorris/>])
+        // Adds 3 next posts, while scrolling
+        setItems([...items,<ChuckNorris/>, <ChuckNorris/>, <ChuckNorris/>])
     }
 
     return(

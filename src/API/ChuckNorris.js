@@ -22,7 +22,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 
 
-// Because of props passing as a argunemt now we can call REACT props   !!!---NOT HTML PROPS----!!!! (for html props is func({nameOfProp}))
+// Because of props passing as an argument now we can call REACT props   !!!---NOT HTML PROPS----!!!! (for html props is func({nameOfProp}))
 function ChuckNorris(props) {
   // Starting value
   const isLiked = props.isLiked
@@ -82,7 +82,6 @@ function ChuckNorris(props) {
 
     function ParseJoke(response) {
         var json_joke = JSON.parse(response);
-        console.log(json_joke)
         return json_joke;
     }
 

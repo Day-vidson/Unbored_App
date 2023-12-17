@@ -6,8 +6,8 @@ function PostsContainerActivity() {
     const [items, setItems] = useState([<Activity/>, <Activity/>, <Activity/>, <Activity/>, <Activity/>])
     
     function loadMorePosts() {
-        // Adds 5 next posts, while scrolling
-        setItems([...items,<Activity/>, <Activity/>, <Activity/>, <Activity/>, <Activity/>])
+        // Adds 3 next posts, while scrolling
+        setItems([...items,<Activity/>, <Activity/>, <Activity/>])
     }
 
     return(

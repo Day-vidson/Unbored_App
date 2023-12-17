@@ -8,41 +8,59 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { lime } from '@mui/material/colors'
 import minion from "./../icons/bird.gif"
 import coin from "./../icons/coin.gif"
 import Likes from '../Likes';
-import difficulty from "./../icons/difficulty.png"
-import participants from "./../icons/participants.png"
+import difficultyImage from "./../icons/difficulty.png"
+import participantsImage from "./../icons/participants.png"
+import { useDispatch } from 'react-redux';
+import { deletePost, savePost } from "../savedActivitySlice";
 
 
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 
-function Activity() {
-  const [clicked, setClicked] = useState(false)
+function Activity(props) {
+  const dispatch = useDispatch()
+  const isLiked = props.isLiked
+  const url = props.url
+
+  // States
+  const [clicked, setClicked] = useState(isLiked)
+  const [activity, setActivity] = useState({})
+
+  useEffect(() => {
+    if (url) {
+      setActivity(ParseActivity(GetActivity(url)))
+
+    } else {
+      setActivity(ParseActivity(GetActivity("http://www.boredapi.com/api/activity")))
+
+    }
+  }, [url])
+
+  const link = "http://www.boredapi.com/api/activity?key=" + activity.key
+  
+
+  function handleSaveClick() {
+    let isClicked = clicked
+
+    if (isClicked !== true) {
+      setClicked(!clicked)
+      // shouldComponentUpdate(clicked)
+      dispatch(savePost(link))
+
+    } else {
+      setClicked(!clicked)
+      // shouldComponentUpdate(clicked)
+      dispatch(deletePost(link))
+    }
+  }
 
   
-  var activityType = ""
-  var activityCost = ""
-  var activityAccess = ""
-  var activityParticipants
-  var activityKey = ""
-
-  function functionShare() {
-    navigator.clipboard
-      .writeText(activityKey)
-      .then(() => {
-        alert("Link successfully copied, now send it to your friends!");
-      })
-      .catch(() => {
-        alert("something went wrong");
-      });
-  } 
-
-  function handleSaveClick() {}
 
   function GetActivity(yourUrl){
     var Httpreq = new XMLHttpRequest();
@@ -52,8 +70,34 @@ function Activity() {
     return Httpreq.responseText;
   }
 
-  function mapCost(cost) {
-    cost = cost*10
+  function ParseActivity(response) {
+    var json_activity = JSON.parse(response);
+
+    // first letter of type big
+    const word = json_activity.type
+    const firstLetter = word.charAt(0)
+    const firstLetterCap = firstLetter.toUpperCase()
+    const remainingLetters = word.slice(1)
+    json_activity.type = firstLetterCap + remainingLetters
+
+    return json_activity
+  }
+
+  
+
+  function functionShare() {
+    navigator.clipboard
+      .writeText(link)
+      .then(() => {
+        alert("Link successfully copied, now send it to your friends!");
+      })
+      .catch(() => {
+        alert("something went wrong");
+      });
+  } 
+
+  function mapCost() {
+    let cost = activity.price*10
 
     switch(true) {
       case cost>=8:
@@ -69,8 +113,8 @@ function Activity() {
     }
   }
 
-  function mapAccess(access) {
-    access = access*10
+  function mapAccess() {
+    let access = activity.accessibility*10
 
     switch(true) {
       case access>=8:
@@ -86,25 +130,7 @@ function Activity() {
     }
   }
 
-  function ParseActivity(response) {
-    var json_activity = JSON.parse(response);
-    console.log(json_activity)
-
-    // First letter capital
-    var str = json_activity.type
-    activityType = str.charAt(0).toUpperCase() + str.slice(1);
-
-    // Mapping cost
-    activityCost = mapCost(json_activity.price)
-
-    // Mapping accessibility
-    activityAccess = mapAccess(json_activity.accessibility)
-
-    activityParticipants = json_activity.participants
-
-    activityKey = json_activity.key
-    return json_activity.activity
-  }
+  
 
   function mapMonthNumberToName(index) {
     // This function returns name of month of given index (start from 0 - january).
@@ -120,9 +146,12 @@ function Activity() {
   
   // This arrangement can be altered based on how we want the date's format to appear.
   let currentDate = `${month} ${day}, ${year}`;
+
   // "https://www.boredapi.com/api/activity"
+
+  let difficultyText = mapAccess()
+  let cost = mapCost()
   
-  var activityText = ParseActivity(GetActivity("https://www.boredapi.com/api/activity"))
 
   return(
     <div class="post activityPost">
@@ -138,12 +167,12 @@ function Activity() {
               <MoreVertIcon />
             </IconButton>
           }
-          title={activityType}
+          title={activity.type}
           subheader={currentDate}
         />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            {activityText}
+            {activity.activity}
           </Typography>
           <CardMedia
           component="img"
@@ -154,34 +183,34 @@ function Activity() {
           alt="Coin"
           />
           <Typography variant="body2" color="text.secondary" style={{marginLeft: "2em" ,padding: "0.5em", height: "2em"}}>
-            {activityCost}
+            {cost}
           </Typography>
 
 
           <CardMedia
           component="img"
           height="fit-content"
-          image={difficulty}
+          image={difficultyImage}
           style={
             {width: "fit-content", height: "3vh", float: "left", display: 'inline'}
           }
           alt="Difficulty"
           />
           <Typography variant="body2" color="text.secondary" style={{marginLeft: "2em" ,padding: "0.5em", height: "2em"}}>
-            {activityAccess}
+            {difficultyText}
           </Typography>
 
           <CardMedia
           component="img"
           height="fit-content"
-          image={participants}
+          image={participantsImage}
           style={
             {width: "fit-content", height: "3vh", float: "left", display: 'inline'}
           }
           alt="Accessibility"
           />
           <Typography variant="body2" color="text.secondary" style={{marginLeft: "2em" ,padding: "0.5em", height: "2em"}}>
-            {activityParticipants}
+            {activity.participants}
           </Typography>
         </CardContent>
         
@@ -206,7 +235,7 @@ function Activity() {
               <ShareIcon />
             </IconButton>
 
-          </CardActions>
+        </CardActions>
       </Card>
     </div>
   );
