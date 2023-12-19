@@ -7,7 +7,6 @@ import Saved from "./Saved";
 import Shared from "./Shared";
 import PostsContainerActivity from "./PostsContainerActivity";
 import PostsContainerChuck from "./PostsContainerChuck";
-import TestComponent from "./TestComponent";
 
 function Content() {
     return(
@@ -18,7 +17,6 @@ function Content() {
                 <Route path="/shared" Component={Shared}></Route>
                 <Route path="/jokes" Component={PostsContainerChuck}></Route>
                 <Route path="/activities" Component={PostsContainerActivity}></Route>
-                <Route path="/post" Component={TestComponent}></Route>
             </Routes>
         </div>
     );
